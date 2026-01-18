@@ -1,27 +1,81 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { heroSlides } from '../../data/heroSlides';
 
 export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev === heroSlides.length - 1 ? 0 : prev + 1));
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+  }, []);
+
+  // Auto-advance slides
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused, nextSlide]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [nextSlide, prevSlide]);
+
   return (
-    <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-      {/* Background Image with Parallax */}
+    <section
+      className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Background Slideshow */}
       <div className="absolute inset-0">
-        <motion.div
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5 }}
-          className="w-full h-full"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=1920&q=80"
-            alt="Container home in mountains"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1, ease: 'easeInOut' }}
+            className="absolute inset-0"
+          >
+            <img
+              src={heroSlides[currentSlide].image}
+              alt={heroSlides[currentSlide].title}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </AnimatePresence>
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
       </div>
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 md:left-8 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors opacity-0 hover:opacity-100 group-hover:opacity-100"
+        style={{ opacity: isPaused ? 1 : 0.3 }}
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 md:right-8 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+        style={{ opacity: isPaused ? 1 : 0.3 }}
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
 
       {/* Content */}
       <div className="container-custom relative z-10">
@@ -35,26 +89,31 @@ export default function Hero() {
             Welcome to Make My Dream Cottages
           </motion.span>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 text-shadow-lg leading-tight"
-          >
-            Your Dream Cottage Awaits in the{' '}
-            <span className="text-accent">Himalayas</span>
-          </motion.h1>
+          <AnimatePresence mode="wait">
+            <motion.h1
+              key={`title-${currentSlide}`}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 text-shadow-lg leading-tight"
+            >
+              {heroSlides[currentSlide].title}
+            </motion.h1>
+          </AnimatePresence>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl"
-          >
-            Premium prefabricated container homes designed and built in Uttarkashi.
-            Experience modern living amidst nature with our durable, beautiful, and
-            sustainable cottage solutions.
-          </motion.p>
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={`subtitle-${currentSlide}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl"
+            >
+              {heroSlides[currentSlide].subtitle}
+            </motion.p>
+          </AnimatePresence>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -100,21 +159,31 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
+      {/* Slide Indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
+        {heroSlides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide
+                ? 'bg-accent w-8'
+                : 'bg-white/50 hover:bg-white/80'
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Progress Bar */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2"
-        >
-          <div className="w-1.5 h-3 bg-white rounded-full" />
-        </motion.div>
-      </motion.div>
+          key={currentSlide}
+          initial={{ width: '0%' }}
+          animate={{ width: isPaused ? '0%' : '100%' }}
+          transition={{ duration: 5, ease: 'linear' }}
+          className="h-full bg-accent"
+        />
+      </div>
     </section>
   );
 }
