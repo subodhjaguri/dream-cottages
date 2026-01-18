@@ -61,18 +61,18 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Hidden on mobile, shown on md+ screens */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 md:left-8 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors opacity-0 hover:opacity-100 group-hover:opacity-100"
-        style={{ opacity: isPaused ? 1 : 0.3 }}
+        className="absolute left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm hidden md:flex items-center justify-center text-white hover:bg-white/20 transition-all"
+        style={{ opacity: isPaused ? 1 : 0.5 }}
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 md:right-8 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-        style={{ opacity: isPaused ? 1 : 0.3 }}
+        className="absolute right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm hidden md:flex items-center justify-center text-white hover:bg-white/20 transition-all"
+        style={{ opacity: isPaused ? 1 : 0.5 }}
       >
         <ChevronRight className="w-6 h-6" />
       </button>

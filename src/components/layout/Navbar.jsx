@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Home, Ruler, Hammer, Package, Image, Phone, Info } from 'lucide-react';
+import { Menu, X, ChevronDown, Home, Ruler, Package, Image, Phone, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navigation = [
@@ -148,9 +148,9 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t"
+            className="lg:hidden bg-white border-t shadow-lg overflow-hidden relative z-60"
           >
-            <div className="container-custom py-4 space-y-2">
+            <div className="container-custom py-4 space-y-2 bg-white relative z-50">
               {navigation.map((item) =>
                 item.children ? (
                   <div key={item.name}>
