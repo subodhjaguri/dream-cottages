@@ -4,6 +4,7 @@ import ServicesOverview from '../components/home/ServicesOverview';
 import WhyChooseUs from '../components/home/WhyChooseUs';
 import GalleryPreview from '../components/home/GalleryPreview';
 import Testimonials from '../components/home/Testimonials';
+import ContactSection from '../components/home/ContactSection';
 import CTASection from '../components/home/CTASection';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <WhyChooseUs />
       <GalleryPreview />
       <Testimonials />
+      <ContactSection />
       <CTASection />
     </>
   );

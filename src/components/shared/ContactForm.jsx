@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, CheckCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG, isEmailJSConfigured } from '../../config/emailjs';
 
 export default function ContactForm({ title = 'Get in Touch' }) {
   const [formData, setFormData] = useState({
@@ -11,16 +13,47 @@ export default function ContactForm({ title = 'Get in Touch' }) {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real app, you would send this to your backend
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    }, 3000);
+    setLoading(true);
+    setError('');
+
+    if (isEmailJSConfigured()) {
+      try {
+        await emailjs.send(
+          EMAILJS_CONFIG.SERVICE_ID,
+          EMAILJS_CONFIG.TEMPLATE_ID,
+          {
+            from_name: formData.name,
+            from_email: formData.email,
+            phone: formData.phone || 'Not provided',
+            subject: formData.subject,
+            message: formData.message,
+          },
+          EMAILJS_CONFIG.PUBLIC_KEY
+        );
+        setSubmitted(true);
+      } catch (err) {
+        console.error('EmailJS Error:', err);
+        setError('Failed to send message. Please try again.');
+      }
+    } else {
+      // Fallback for development/demo
+      console.log('Form submitted (EmailJS not configured):', formData);
+      setSubmitted(true);
+    }
+
+    setLoading(false);
+
+    if (!error) {
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      }, 3000);
+    }
   };
 
   const handleChange = (e) => {
@@ -56,6 +89,13 @@ export default function ContactForm({ title = 'Get in Touch' }) {
       className="bg-white rounded-2xl shadow-lg p-8"
     >
       <h3 className="font-heading text-2xl font-bold text-dark mb-6">{title}</h3>
+
+      {error && (
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+          {error}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -144,9 +184,10 @@ export default function ContactForm({ title = 'Get in Touch' }) {
 
         <button
           type="submit"
-          className="w-full btn-primary flex items-center justify-center space-x-2"
+          disabled={loading}
+          className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-70"
         >
-          <span>Send Message</span>
+          <span>{loading ? 'Sending...' : 'Send Message'}</span>
           <Send className="w-5 h-5" />
         </button>
       </form>
