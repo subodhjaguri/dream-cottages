@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Facebook, Instagram, Youtube, Home, ArrowRight } from 'lucide-react';
+import { MapPin, Phone, Mail, Facebook, Instagram, Youtube, ArrowRight } from 'lucide-react';
 
 const quickLinks = [
   { name: 'Home', href: '/' },
@@ -33,9 +33,11 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <Link to="/" className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <Home className="w-6 h-6 text-white" />
-              </div>
+              <img
+                src="/cottage-logo.png"
+                alt="Make My Dream Cottages"
+                className="w-12 h-12 object-contain"
+              />
               <span className="font-heading font-bold text-xl">
                 Make My Dream Cottages
               </span>

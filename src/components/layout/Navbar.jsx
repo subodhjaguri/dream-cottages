@@ -55,9 +55,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className={`w-10 h-10 rounded-lg bg-primary flex items-center justify-center ${isScrolled || !isHomePage ? '' : 'bg-white/20 backdrop-blur-sm'}`}>
-              <Home className={`w-6 h-6 ${isScrolled || !isHomePage ? 'text-white' : 'text-white'}`} />
-            </div>
+            <img
+              src="/cottage-logo.png"
+              alt="Make My Dream Cottages"
+              className="w-12 h-12 object-contain"
+            />
             <span className={`font-heading font-bold text-xl ${logoColor}`}>
               Make My Dream Cottages
             </span>
