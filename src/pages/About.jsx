@@ -177,6 +177,73 @@ export default function About() {
         </div>
       </section>
 
+      {/* ISO Certification */}
+      <section id="certification" className="section-padding">
+        <div className="container-custom">
+          <SectionTitle
+            subtitle="Certified Excellence"
+            title="ISO 9001:2015 Certified"
+            description="Our Quality Management System has been independently assessed and certified by Paramount Quality Certifications (PQC), London."
+          />
+
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="lg:w-1/2 flex justify-center"
+            >
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+                <img
+                  src="/iso-certificate.png"
+                  alt="ISO 9001:2015 Certificate of Registration - Make My Dream Cottage"
+                  className="relative rounded-xl shadow-2xl max-w-sm w-full border-2 border-white/50"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:w-1/2"
+            >
+              <h3 className="font-heading text-2xl font-bold text-dark mb-4">
+                Quality You Can Trust
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Make My Dream Cottage is proud to be an ISO 9001:2015 certified company. This internationally recognized certification validates our commitment to maintaining the highest standards in quality management across all our operations.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <span className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-sm mr-3 mt-0.5 flex-shrink-0">✓</span>
+                  <span className="text-gray-600">Modular, Prefabricated & LGSF Cottages</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-sm mr-3 mt-0.5 flex-shrink-0">✓</span>
+                  <span className="text-gray-600">Steel Structures & Pre-Engineered Buildings</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-sm mr-3 mt-0.5 flex-shrink-0">✓</span>
+                  <span className="text-gray-600">Prefabricated & Mobile Toilets, Bio Toilets</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-sm mr-3 mt-0.5 flex-shrink-0">✓</span>
+                  <span className="text-gray-600">Modular Container Shops, Offices & Godowns</span>
+                </li>
+              </ul>
+              <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/10">
+                <p className="text-sm text-gray-500">
+                  <span className="font-semibold text-dark">Certificate No:</span> QU-59897/0226 &nbsp;|&nbsp;
+                  <span className="font-semibold text-dark">Valid Until:</span> 06 Feb 2029
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Container Homes */}
       <section className="section-padding">
         <div className="container-custom">

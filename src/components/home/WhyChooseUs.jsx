@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Award, Palette, Users, Shield, Clock, Truck } from 'lucide-react';
 import SectionTitle from '../ui/SectionTitle';
 
@@ -68,6 +69,22 @@ export default function WhyChooseUs() {
             </motion.div>
           ))}
         </div>
+
+        {/* ISO Certification Badge */}
+        <Link to="/about#certification">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 flex items-center justify-center gap-4 bg-white/10 backdrop-blur-sm rounded-xl px-8 py-5 max-w-xl mx-auto border border-white/10 hover:bg-white/15 transition-colors cursor-pointer"
+          >
+            <Shield className="w-10 h-10 text-accent flex-shrink-0" />
+            <div className="text-left">
+              <p className="text-white font-heading font-semibold text-lg">ISO 9001:2015 Certified</p>
+              <p className="text-gray-300 text-sm">Quality Management System certified by PQC, London</p>
+            </div>
+          </motion.div>
+        </Link>
       </div>
     </section>
   );
