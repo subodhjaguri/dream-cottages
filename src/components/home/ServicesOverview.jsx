@@ -87,7 +87,7 @@ export default function ServicesOverview() {
           ))}
         </div>
 
-        {/* ISO Certification */}
+        {/* ISO Certifications */}
         <div className="mt-16 flex flex-col lg:flex-row items-center gap-12">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -95,13 +95,21 @@ export default function ServicesOverview() {
             viewport={{ once: true }}
             className="lg:w-1/2 flex justify-center"
           >
-            <Link to="/about#certification">
+            <Link to="/about#certification" className="flex flex-col sm:flex-row gap-6">
               <div className="relative group">
                 <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
                 <img
                   src="/iso-certificate.png"
                   alt="ISO 9001:2015 Certificate of Registration - Make My Dream Cottage"
-                  className="relative rounded-xl shadow-2xl max-w-sm w-full border-2 border-white/50"
+                  className="relative rounded-xl shadow-2xl max-w-[200px] w-full border-2 border-white/50"
+                />
+              </div>
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 via-primary/20 to-accent/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+                <img
+                  src="/iso-14001-certificate.png"
+                  alt="ISO 14001:2015 Environmental Management Certificate - Make My Dream Cottage"
+                  className="relative rounded-xl shadow-2xl max-w-[200px] w-full border-2 border-white/50"
                 />
               </div>
             </Link>
@@ -114,10 +122,10 @@ export default function ServicesOverview() {
             className="lg:w-1/2"
           >
             <h3 className="font-heading text-2xl font-bold text-dark mb-4">
-              Quality You Can Trust
+              Quality & Sustainability You Can Trust
             </h3>
             <p className="text-gray-600 mb-6">
-              Make My Dream Cottage is proud to be an ISO 9001:2015 certified company. This internationally recognized certification validates our commitment to maintaining the highest standards in quality management across all our operations.
+              Make My Dream Cottage is dual ISO certified — ISO 9001:2015 for quality management and ISO 14001:2015 for environmental management, validating our commitment to excellence and sustainability.
             </p>
             <ul className="space-y-3">
               <li className="flex items-start">
@@ -139,8 +147,9 @@ export default function ServicesOverview() {
             </ul>
             <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/10">
               <p className="text-sm text-gray-500">
-                <span className="font-semibold text-dark">Certificate No:</span> QU-59897/0226 &nbsp;|&nbsp;
-                <span className="font-semibold text-dark">Valid Until:</span> 06 Feb 2029
+                <span className="font-semibold text-dark">ISO 9001:2015</span> &nbsp;|&nbsp;
+                <span className="font-semibold text-dark">ISO 14001:2015</span> &nbsp;|&nbsp;
+                Certified by PQC, London
               </p>
             </div>
           </motion.div>

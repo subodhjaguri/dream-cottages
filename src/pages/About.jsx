@@ -177,13 +177,13 @@ export default function About() {
         </div>
       </section>
 
-      {/* ISO Certification */}
+      {/* ISO Certifications */}
       <section id="certification" className="section-padding">
         <div className="container-custom">
           <SectionTitle
             subtitle="Certified Excellence"
-            title="ISO 9001:2015 Certified"
-            description="Our Quality Management System has been independently assessed and certified by Paramount Quality Certifications (PQC), London."
+            title="ISO Certified Company"
+            description="Our Quality and Environmental Management Systems have been independently assessed and certified by Paramount Quality Certifications (PQC), London."
           />
 
           <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -193,13 +193,23 @@ export default function About() {
               viewport={{ once: true }}
               className="lg:w-1/2 flex justify-center"
             >
-              <div className="relative group">
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
-                <img
-                  src="/iso-certificate.png"
-                  alt="ISO 9001:2015 Certificate of Registration - Make My Dream Cottage"
-                  className="relative rounded-xl shadow-2xl max-w-sm w-full border-2 border-white/50"
-                />
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="relative group">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+                  <img
+                    src="/iso-certificate.png"
+                    alt="ISO 9001:2015 Certificate of Registration - Make My Dream Cottage"
+                    className="relative rounded-xl shadow-2xl max-w-[240px] w-full border-2 border-white/50"
+                  />
+                </div>
+                <div className="relative group">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 via-primary/20 to-accent/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+                  <img
+                    src="/iso-14001-certificate.png"
+                    alt="ISO 14001:2015 Environmental Management Certificate - Make My Dream Cottage"
+                    className="relative rounded-xl shadow-2xl max-w-[240px] w-full border-2 border-white/50"
+                  />
+                </div>
               </div>
             </motion.div>
 
@@ -210,10 +220,10 @@ export default function About() {
               className="lg:w-1/2"
             >
               <h3 className="font-heading text-2xl font-bold text-dark mb-4">
-                Quality You Can Trust
+                Quality & Sustainability You Can Trust
               </h3>
               <p className="text-gray-600 mb-6">
-                Make My Dream Cottage is proud to be an ISO 9001:2015 certified company. This internationally recognized certification validates our commitment to maintaining the highest standards in quality management across all our operations.
+                Make My Dream Cottage is proud to be dual ISO certified. Our ISO 9001:2015 certification ensures the highest quality standards, while our ISO 14001:2015 certification demonstrates our commitment to environmental responsibility across all operations.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start">
@@ -233,11 +243,20 @@ export default function About() {
                   <span className="text-gray-600">Modular Container Shops, Offices & Godowns</span>
                 </li>
               </ul>
-              <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/10">
-                <p className="text-sm text-gray-500">
-                  <span className="font-semibold text-dark">Certificate No:</span> QU-59897/0226 &nbsp;|&nbsp;
-                  <span className="font-semibold text-dark">Valid Until:</span> 06 Feb 2029
-                </p>
+              <div className="mt-6 space-y-2">
+                <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
+                  <p className="text-sm text-gray-500">
+                    <span className="font-semibold text-dark">ISO 9001:2015</span> &nbsp;|&nbsp;
+                    Certificate No: QU-59897/0226 &nbsp;|&nbsp;
+                    Valid Until: 06 Feb 2029
+                  </p>
+                </div>
+                <div className="p-4 bg-accent/5 rounded-lg border border-accent/10">
+                  <p className="text-sm text-gray-500">
+                    <span className="font-semibold text-dark">ISO 14001:2015</span> &nbsp;|&nbsp;
+                    Environmental Management System Certified
+                  </p>
+                </div>
               </div>
             </motion.div>
           </div>

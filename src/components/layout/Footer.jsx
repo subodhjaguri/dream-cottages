@@ -46,10 +46,13 @@ export default function Footer() {
               Premium prefabricated container homes designed and built locally in Uttarkashi, Uttarakhand. Transform your dream into reality.
             </p>
             <Link to="/about#certification" className="flex items-center gap-3 mb-6 bg-white/5 rounded-lg px-4 py-3 border border-white/10 hover:bg-white/10 transition-colors">
-              <img src="/iso-certificate.png" alt="ISO 9001:2015" className="w-12 h-auto rounded" />
+              <div className="flex gap-2 shrink-0">
+                <img src="/iso-certificate.png" alt="ISO 9001:2015" className="w-10 h-auto rounded" />
+                <img src="/iso-14001-certificate.png" alt="ISO 14001:2015" className="w-10 h-auto rounded" />
+              </div>
               <div>
-                <p className="text-accent font-semibold text-sm">ISO 9001:2015</p>
-                <p className="text-gray-400 text-xs">Certified Quality Management</p>
+                <p className="text-accent font-semibold text-sm">ISO 9001 & ISO 14001</p>
+                <p className="text-gray-400 text-xs">Quality & Environmental Certified</p>
               </div>
             </Link>
           </div>
