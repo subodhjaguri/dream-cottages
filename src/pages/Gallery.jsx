@@ -10,6 +10,17 @@ const categories = [
 ];
 
 const galleryImages = [
+  // Latest cottage photos — snowy season
+  { src: '/images/gallery/cottage-snow-night-1.jpg', category: 'exterior', title: 'Cottage at Night in Snow' },
+  { src: '/images/gallery/cottage-valley-snow.jpg', category: 'exterior', title: 'Cottages in Snowy Valley' },
+  { src: '/images/gallery/cottage-snow-night-2.jpg', category: 'exterior', title: 'Glowing Cottage in Winter Forest' },
+  { src: '/images/gallery/cottage-snowfall-pines.jpg', category: 'exterior', title: 'Cottages in Snowfall' },
+  { src: '/images/gallery/cottage-row-snowfall.jpg', category: 'cottages', title: 'Two-Story Cottage Row' },
+  { src: '/images/gallery/cottage-balcony-mountain-view.jpg', category: 'exterior', title: 'Balcony Mountain View' },
+  { src: '/images/gallery/cottage-bedroom-wooden-1.jpg', category: 'interior', title: 'Wooden Bedroom Suite' },
+  { src: '/images/gallery/cottage-bedroom-vaulted.jpg', category: 'interior', title: 'Vaulted Ceiling Bedroom' },
+  { src: '/images/gallery/cottage-bedroom-cozy.jpg', category: 'interior', title: 'Cozy Warm-Lit Bedroom' },
+  { src: '/images/gallery/cottage-bedroom-wooden-2.jpg', category: 'interior', title: 'Pine Wood Bedroom' },
   // Real cottage images from the website
   { src: '/images/gallery/dream-cottage-image1.jpg', category: 'cottages', title: 'Container Cottage' },
   { src: '/images/gallery/dream-cottage-image2.jpg', category: 'cottages', title: 'Premium Cottage' },
